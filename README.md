@@ -11,6 +11,7 @@ This is an AI chatbot application built with FastAPI and OpenAI's GPT-3.5 model.
 - Image generation capabilities using OpenAI's DALL-E model, allowing users to generate images based on textual descriptions.
 - Web-based interface using FastAPI and Jinja2 templates.
 - Support for handling concurrent chat sessions and maintaining chat history.
+- Chatbot personality feature to provide a consistent tone and style in responses.
 
 ## Setup
 

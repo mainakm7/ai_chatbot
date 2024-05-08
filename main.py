@@ -32,6 +32,18 @@ async def chat_page(request: Request):
 chatlog = []
 chatlog.append({"role":"system", "content": "You are a helpful assistant"})
 
+
+@app.get("/system", response_class=HTMLResponse)
+async def system_role(request: Request):
+    return templates.TemplateResponse("system.html", {"request": request})
+
+
+@app.post("/system", response_class=HTMLResponse)
+async def system_role(request: Request, system_message: Annotated[str, Form()]):
+    chatlog[0]["content"] = system_message
+    return templates.TemplateResponse("system.html", {"request": request, "system": system_message})
+    
+
 chat_responses = []
 
 
