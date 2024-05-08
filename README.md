@@ -31,7 +31,7 @@ This is an AI chatbot application built with FastAPI and OpenAI's GPT-3.5 model.
 
 ### Configuration
 
-1. Create a `secrets.json` file in the root directory of the project.
+1. Create a `secrets.json` file in the root directory outside the project directory (ai_chatbot).
 2. Add your OpenAI API key to the `secrets.json` file:
 
     ```json
@@ -42,7 +42,7 @@ This is an AI chatbot application built with FastAPI and OpenAI's GPT-3.5 model.
 
 ### Running the Application
 
-1. Open a terminal and navigate to the root directory outside the project directory.
+1. Open a terminal and navigate to the root directory outside the project directory (ai_chatbot).
 2. Start the FastAPI server by running:
 
     ```
