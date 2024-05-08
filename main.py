@@ -24,27 +24,18 @@ app = FastAPI()
 templates = Jinja2Templates(directory="ai_chatbot/templates")
 
 
+chatlog = []
+chatlog.append({"role":"system", "content": "You are a helpful assistant"})
+ 
+
+chat_responses = []
+
+
+#Chatbot API
+
 @app.get("/", response_class=HTMLResponse)
 async def chat_page(request: Request):
     return templates.TemplateResponse("home.html",{"request": request})
-
-
-chatlog = []
-chatlog.append({"role":"system", "content": "You are a helpful assistant"})
-
-
-@app.get("/system", response_class=HTMLResponse)
-async def system_role(request: Request):
-    return templates.TemplateResponse("system.html", {"request": request})
-
-
-@app.post("/system", response_class=HTMLResponse)
-async def system_role(request: Request, system_message: Annotated[str, Form()]):
-    chatlog[0]["content"] = system_message
-    return templates.TemplateResponse("system.html", {"request": request, "system": system_message})
-    
-
-chat_responses = []
 
 
 @app.post("/", response_class=HTMLResponse)
@@ -65,6 +56,21 @@ async def chat(request: Request, user_input: Annotated[str, Form()]):
 
     return templates.TemplateResponse("home.html", {"request": request, "chat_responses": chat_responses})
 
+
+#Chatbot personality API
+
+@app.get("/system", response_class=HTMLResponse)
+async def system_role(request: Request):
+    return templates.TemplateResponse("system.html", {"request": request})
+
+
+@app.post("/system", response_class=HTMLResponse)
+async def system_role(request: Request, system_message: Annotated[str, Form()]):
+    chatlog[0]["content"] = system_message
+    return templates.TemplateResponse("system.html", {"request": request, "system": system_message})
+
+
+#Image generation API
 
 @app.get("/image", response_class=HTMLResponse)
 async def image_page(request: Request):
