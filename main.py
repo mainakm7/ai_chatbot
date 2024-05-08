@@ -8,15 +8,22 @@ api_key = secret.get("OPENAI_PROJECT_KEY")
 
 openai.api_key=api_key
 
-response = openai.chat.completions.create(
-    model="gpt-3.5-turbo",
-    messages=[{
-        "role":"system",
-        "content":"You are a helpful assistant"
-    },{
-        "role":"user",
-        "content":"What is Python?"
-    }]
-)
+chatlog = []
+chatlog.append({"role":"system", "content": "You are a helpful assistant"})
+while True:
+    uinput = input()
+    if uinput.lower() == "stop":
+        break
+    
+    chatlog.append({"role":"user", "content": uinput})
 
-print(response)
+    response = openai.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=chatlog,
+        temperature=0.8
+    )
+
+    assistant_response = response.choices[0].message.content
+    chatlog.append({"role": "assistant", "content": assistant_response})
+    print(response.choices[0].message.content)
+
