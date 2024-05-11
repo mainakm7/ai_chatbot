@@ -83,7 +83,7 @@ async def image_generate(request: Request, user_input: Annotated[str, Form()]):
     response = openai.images.generate(
         promt=user_input,
         n=1,
-        size="512x512"
+        size="1024x1024"
         
     )
     
