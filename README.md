@@ -7,7 +7,7 @@ This is an AI chatbot application built with FastAPI and OpenAI's GPT-3.5 model.
 ## Features
 
 - Interactive chat interface for users to communicate with the AI assistant.
-- Seamless integration with OpenAI's GPT-3.5 model for generating natural language responses.
+- Seamless integration with OpenAI's GPT-3.5-turbo model for generating natural language responses.
 - Image generation capabilities using OpenAI's DALL-E model, allowing users to generate images based on textual descriptions.
 - Web-based interface using FastAPI and Jinja2 templates.
 - Support for handling concurrent chat sessions and maintaining chat history.
